@@ -8,6 +8,8 @@
 using PlexShareNetwork;
 using PlexShareNetwork.Communication;
 using PlexShareNetwork.Serialization;
+using PlexShareScreenshare.Clients;
+using PlexShareScreenshare.Server;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ using Frame = System.Tuple<System.Tuple<int, int>,
                         System.Tuple<int, int, int>>>>;
 
 
-namespace PlexShareScreenshare.Client
+namespace PlexShareScreenshare.Client.Client
 {
     /// <summary>
     /// Class contains implementation of the ScreenshareClient which will

@@ -3,12 +3,84 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:gif="http://wpfanimatedgif.codeplex.com" 
       xmlns:local="clr-namespace:PlexShareApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ScreenSharePage">
 
-    <Grid Background="Black">
-        
-    </Grid>
+    <Grid Background = "Black" >
+        <!--
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions >
+        -->
+
+        <Grid.RowDefinitions >
+            <RowDefinition Height = "10*" />
+            <RowDefinition/>
+        </Grid.RowDefinitions >
+
+        <DockPanel Grid.Row = "1" HorizontalAlignment = "Center" VerticalAlignment = "Stretch" >
+            <Button x:Name = "PreviousPage" Click = "OnPreviousPageButtonClicked" ToolTip = "Previous Page" Width = "40" Height = "40"
+                    BorderThickness = "0" Background = "{Binding Color}" >
+                <Image Source = "\Icons\PreviousButton.png" />
+            </Button >
+            <Button x:Name = "NextPage" Click = "OnNextPageButtonClicked" ToolTip = "Next Page" Width = "40" Height = "40"
+                    BorderThickness = "0" Background = "White" >
+                <Image Source = "\Icons\NextButton.png" />
+            </Button >
+        </DockPanel >
+
+        <Image gif:ImageBehavior.AnimatedSource="Icons/tenor.gif" gif:ImageBehavior.RepeatBehavior="Forever" 
+               Name="EmptyScreen" Visibility="Hidden" Height="200"/>
+        <Canvas>
+            <TextBlock Name="EmptyText" Text="No One's Here" Foreground="IndianRed" Visibility="Hidden" 
+                   FontSize="40" FontFamily="Comic Sans MS" FontStretch="Expanded" TextWrapping="Wrap"
+                   Height="50" Width="400" Padding="50,1,1,1"
+                       Canvas.Top="450" Canvas.Left="540"/>
+        </Canvas>
+
+        <StackPanel Orientation="Vertical">
+
+            <ItemsControl ItemsSource="{Binding ImageList}">
+
+                <!-- This panel will be used to hold the items -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="3" Columns="3" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- Each item will be drawn using this template -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="4">
+                                <Image Source="{Binding Image}" Height ="200" Width="200" Stretch="Fill" />
+                            </Border>
+                            <Button x:Name="PinButton" Width="30" Height="30" Opacity ="0.5" HorizontalAlignment="Center" Click="OnPinButtonClicked">
+                                <Image Source="Icons/PinButton1.png" />
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Hidden" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Grid}},Path=IsMouseOver}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid >
 </Page>
