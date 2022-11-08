@@ -1,4 +1,4 @@
-﻿using PlexShareScreenshare.Client;
+﻿using PlexShareScreenshare.Client.Client;
 using System.Drawing;
 
 namespace PlexShareTests.ScreenshareTests
