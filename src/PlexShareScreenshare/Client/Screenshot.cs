@@ -14,7 +14,7 @@ using MapFlags = SharpDX.Direct3D11.MapFlags;
 using Resource = SharpDX.DXGI.Resource;
 
 
-namespace PlexShareScreenshare.Client.Client
+namespace PlexShareScreenshare.Client
 {
     /// <summary>
     /// Class contains the necessary functions for taking the screenshot of the current screen.

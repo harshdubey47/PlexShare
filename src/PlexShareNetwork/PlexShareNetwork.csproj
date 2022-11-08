@@ -14,8 +14,4 @@
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
-	</ItemGroup>
-
 </Project>

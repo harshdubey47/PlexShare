@@ -20,7 +20,7 @@ using Frame = System.Tuple<System.Tuple<int, int>,
 using ImageDiffList = System.Collections.Generic.List<System.Tuple<System.Tuple<int, int>,
                         System.Tuple<int, int, int>>>;
 
-namespace PlexShareScreenshare.Client.Client
+namespace PlexShareScreenshare.Client
 {
     /// <summary>
     /// Class contains implementation of the screen processing using threads (tasks)

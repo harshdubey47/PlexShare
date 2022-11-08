@@ -11,7 +11,7 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PlexShareScreenshare.Client.Client
+namespace PlexShareScreenshare.Client
 {
     /// <summary>
     /// Class contains implementation of the screen capturing using threads (tasks)
