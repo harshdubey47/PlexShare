@@ -49,7 +49,7 @@ namespace PlexShareScreenshare.Client
 
         /// <summary>
         /// Called by ScreenshareClient.
-        /// Initializes queue, oldRes, newRes, cancellation token and the previous image.
+        /// Initializes processed frame queue.
         /// </summary>
         public ScreenProcessor(ScreenCapturer Capturer)
         {
@@ -209,6 +209,7 @@ namespace PlexShareScreenshare.Client
             _capturedImageHeight = img.Height;
             _capturedImageWidth = img.Width;
 
+            // also set the current and new resolution
             _newRes = new() { Height = _capturedImageHeight, Width = _capturedImageWidth };
             _currentRes = _newRes;
             prevImage = new Bitmap(_newRes.Width, _newRes.Height);
@@ -216,6 +217,7 @@ namespace PlexShareScreenshare.Client
             Trace.WriteLine(Utils.GetDebugMessage("Previous image set and" +
                 "going to start image processing", withTimeStamp: true));
 
+            // start the processing thread
             try
             {
                 _processorTask = new Task(Processing);
@@ -234,7 +236,7 @@ namespace PlexShareScreenshare.Client
         /// <summary>
         /// Called by ScreenshareClient when the client stops screen sharing
         /// kill the processor task and make the processor task variable null
-        /// Empty the Queue.
+        /// Then empty the Queue.
         /// </summary>
         public void StopProcessing()
         {

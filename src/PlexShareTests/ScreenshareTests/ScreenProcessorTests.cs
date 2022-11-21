@@ -10,6 +10,7 @@ namespace PlexShareTests.ScreenshareTests
     [Collection("Sequential")]
     public class ScreenProcessorTests
     {
+        // tests if some images are captured and processed
         [Fact]
         public void TestProcessedFrameNonEmpty()
         {
@@ -29,6 +30,7 @@ namespace PlexShareTests.ScreenshareTests
             Assert.True(v2 > 0);
         }
 
+        // checks if processed frame gets cleared or not after we stop processing
         [Fact]
         public void TestCleanup()
         {
@@ -43,10 +45,11 @@ namespace PlexShareTests.ScreenshareTests
             screenCapturer.StopCapture();
             screenProcessor.StopProcessing();
 
-            Console.WriteLine($"len = {screenProcessor.GetProcessedFrameLength()}");
             Assert.True(screenProcessor.GetProcessedFrameLength() == 0);
         }
 
+        // if we process a image with a new bitmap image then it will not change the 
+        // original bitmap image
         [Fact]
         public void TestSameImagePixelDiffZero()
         {
@@ -65,6 +68,7 @@ namespace PlexShareTests.ScreenshareTests
             Assert.True(Utils.CompareBitmap(tmp, img));
         }
 
+        // test if the resolution of image changes after we call "SetNewResolution"
         [Fact]
         public void TestResolutionChange()
         {
@@ -99,6 +103,7 @@ namespace PlexShareTests.ScreenshareTests
             Assert.True(res1?.Width / 9 == res2?.Width);
         }
 
+        // test if image processed has 0 or 1 at the end
         [Fact]
         public void TestCorrectImageStringFormat()
         {
@@ -121,7 +126,3 @@ namespace PlexShareTests.ScreenshareTests
         }
     }
 }
-
-// calling processing again should give the image back
-// stop should make the queue length change stop
-// finally it must have last character as 0 or 1
