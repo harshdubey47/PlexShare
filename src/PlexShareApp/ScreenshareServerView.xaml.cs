@@ -21,7 +21,7 @@ namespace PlexShareApp
         {
 
             InitializeComponent();
-            ScreenshareServerViewModel viewModel = ScreenshareServerViewModel.GetInstance();
+            ScreenshareServerViewModel viewModel = ScreenshareServerViewModel.GetInstance(isDebugging: true);
             this.DataContext = viewModel;
 
             Trace.WriteLine(Utils.GetDebugMessage("Created the ScreenshareServerView Component", withTimeStamp: true));

@@ -155,6 +155,8 @@ namespace PlexShareScreenshare.Server
         /// </summary>
         public void StopStitching()
         {
+            if (_stitchTask == null) return;
+
             try
             {
                 _cancellationToken = true;
