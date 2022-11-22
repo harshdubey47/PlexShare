@@ -155,7 +155,7 @@ namespace PlexShareScreenshare.Client
         }
 
         /// <summary>
-        /// Starting the image sending function on a thread.
+        /// Starting the capturer and processor and the image sending function on a thread.
         /// </summary>
         private void StartImageSending()
         {

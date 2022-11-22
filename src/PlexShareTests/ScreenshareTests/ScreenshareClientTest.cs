@@ -37,9 +37,6 @@ namespace PlexShareTests.ScreenshareTests
             DataPacket? packet = JsonSerializer.Deserialize<DataPacket>(argString);
 
             Assert.True(packet?.Header == ClientDataHeader.Register.ToString());
-            //communicatorMock.Verify(communicator =>
-            //    communicator.Send(It.IsAny<string>(), SSUtils.ModuleIdentifier, null),
-            //    Times.AtLeastOnce);
         }
 
         [Fact]
@@ -124,11 +121,3 @@ namespace PlexShareTests.ScreenshareTests
 
     }
 }
-
-// start -> stop -> start
-// moq start processing sends packets to communicator (register + communication)
-// using moq test on data receive both things
-// using moq test start image sending
-// test stop ss
-// test StopConfirmationSending
-// 
